@@ -1,0 +1,160 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    width: 100%;
+    color: white;
+    /* border: 2px solid white; */
+    height: 70px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.left-navi{
+    /* border: 1px solid white; */
+    /* height: 100%; */
+    margin-inline-start: 60px;
+    align-items: center;
+    width: fit-content;
+}
+
+.left-navi > h1 {
+    font-size: 24px;
+    /* border: 1px solid white; */
+}
+
+.burger {
+    display: none;
+}
+
+.right-navi{
+    margin-inline-end: 30px;
+}
+
+.right-navi ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.right-navi ul li a {
+    display: block;
+    font-size: 18px;
+    padding: 5px 15px;
+    border-radius: 50px;
+    transition: 0.4s;
+    margin: 10 5px;
+    /* border: 1px solid blue; */
+}
+
+.right-navi ul li a:hover,
+.right-navi ul li a.active 
+{
+    color: black;
+    background-color: white;
+}
+
+
+@media screen and (max-width : 1750px) {
+
+}
+
+@media only screen and (max-width : 1320px) {
+    .left-navi{
+        margin-inline-start: 50px;
+    }
+    .right-navi{
+        margin-inline-end: 20px;
+    }
+}
+
+@media only screen and (max-width : 1100px) {
+    /* .navbar {
+        padding: 0 30px;
+    } */
+    .left-navi{
+        margin-inline-start: 30px;
+    }
+    .right-navi{
+        margin-inline-end: 10px;
+    }
+
+}
+
+@media only screen and (max-width : 930px) {
+    .burger{
+        display: block;
+        cursor: pointer; 
+        margin-inline-end: 30px;
+    }
+    .burger button{
+        border: none;
+        outline: none;
+        background-color: black;
+        color: white;
+    }
+    .right-navi {
+        height: 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: black;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+    
+    .right-navi.active {
+        height: 450px;
+    }
+
+    .right-navi.active ul {
+        opacity: 1;
+    }
+
+    .right-navi ul {
+        display: block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .right-navi ul li a {
+        margin-bottom: 10px;
+    }
+
+}
+
+@media screen and (max-width : 650px) {
+    
+    .right-navi.active {
+        height: 300px;
+    }
+
+    .right-navi.active ul {
+        opacity: 1;
+    }
+
+    .right-navi ul {
+        display: block;
+        width: fit-content;
+        margin: 30px auto 0 auto;
+        text-align: center;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .right-navi ul li a {
+        margin-bottom: 10px;
+    }
+
+}
