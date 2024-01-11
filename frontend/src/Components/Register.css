@@ -1,0 +1,74 @@
+.register-h1 {
+    margin-bottom: 20px;
+    font-size: 40px;
+
+}
+
+.register-register {
+    margin-left: 0px;
+    font-size: 25px;
+    padding: 5px 15px
+}
+
+.register-main label{
+    font-size: 25px;
+}   
+
+.register-main input{
+    font-size: 25px;
+    border: 1px solid black;
+    margin-top: 10px;
+}   
+
+.register-main {
+    margin-top: 10px;
+}
+
+@media screen and (max-width :  1350px ) {
+    .register-h1 {
+        margin-bottom: 10px;
+        font-size: 30px;
+    
+    }
+    
+    .register-register {
+        margin-left: 0;
+        font-size: 20px;
+        padding: 2px 10px
+    }
+    
+    .register-main label{
+        font-size: 25px;
+    }   
+    
+    .register-main input{
+        font-size: 15px;
+        border: 1px solid black;
+        margin-top: 5px;
+    } 
+
+
+}
+/* @media screen and (max-width :  500px ) {
+    .register-h1 {
+        margin-bottom: 10px;
+        font-size: 30px;
+    
+    }
+    
+    .register-register {
+        margin-left: 0;
+        font-size: 20px;
+        padding: 2px 10px
+    }
+    
+    .register-main label{
+        font-size: 25px;
+    }   
+    
+    .register-main input{
+        font-size: 15px;
+        border: 1px solid black;
+        margin-top: 5px;
+    }   
+} */

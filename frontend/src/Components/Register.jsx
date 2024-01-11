@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import api from "../helpers/axios.config";
+import './Register.css'
 
 
 const Register = () => {
 
-    const [userData, setUserData] = useState({ name: "", email: "", password: "" })
+    const [userData, setUserData] = useState({ name: "", email: "", number: "", password: "" })
 
     const rout = useNavigate();
     console.log(userData)
@@ -18,23 +18,26 @@ const Register = () => {
     }
 
     const sendDataToBackend = async (event) => {
-        event.preventDefault();   
-        if (userData.name && userData.email && userData.password) {
+        event.preventDefault();
+        if (userData.name && userData.email && userData.number && userData.password) {
             if (userData.password.length >= 8) {
-                try {
-                    const response = await api.post("/auth/register", { userData });
-                    // const response = {data: {success : true}}
-                    if (response.data.success) {
-                        toast.success("Register Successfull.")
-                        setUserData({ name: "", email: "", password: "" })
-                        rout("/")
-                    } else {
-                        throw new Error("Something went wrong")
+                if (userData.number.length == 10) {
+                    try {
+                        const response = await api.post("/auth/register", { userData });
+                        if (response.data.success) {
+                            toast.success("Register Successfull.")
+                            setUserData({ name: "", email: "", number: "", password: "" })
+                            rout("/")
+                        } else {
+                            throw new Error("Something went wrong")
+                        }
                     }
-                }
-                catch (error) {
-                    toast.error(error?.message)
-                    console.log(error, "error-hai")
+                    catch (error) {
+                        toast.error(error?.message)
+                        console.log(error, "error-hai")
+                    }
+                }else{
+                    toast.error("Invalid Phone number")
                 }
             }
             else {
@@ -47,9 +50,9 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <div className="register-main">
             <form onSubmit={sendDataToBackend} autoComplete="off" >
-                <h1>Register</h1>
+                <h1 className="register-h1">Register</h1>
 
                 <label>Name</label><br />
                 <input name='name' type="text" onChange={HandleChange} autoComplete="off" /><br />
@@ -57,10 +60,13 @@ const Register = () => {
                 <label>Email</label><br />
                 <input name='email' type="email" onChange={HandleChange} autoComplete="off" /><br />
 
-                <label>Password</label><br />
-                <input name='password' type="password" onChange={HandleChange} autoComplete="off" /><br /><br />    
+                <label>Phone</label><br />
+                <input name='number' type="number" onChange={HandleChange} autoComplete="off" /><br />
 
-                <input type="Submit"  value='Register' />
+                <label>Password</label><br />
+                <input name='password' type="password" onChange={HandleChange} autoComplete="off" /><br /><br />
+
+                <input className="register-register" type="Submit" value='Register' />
             </form>
         </div>
     )

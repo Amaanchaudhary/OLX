@@ -1,0 +1,30 @@
+.cartScreen{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: fit-content;
+}
+.cartproduct{
+    width: 300px;
+    height: 400px;
+    border: 1px solid black;
+    margin : 20px 20px
+}
+.cartproduct > h4 , h3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.cartproductimg{
+    width: 100%;
+    height: 70%;
+}
+.cartproductimg > img{
+    width: 100%;
+    height: 100%;
+}
+.delete-button{
+    margin-top: 7px;
+    padding: 4px 10px;
+    font-size: 16px;
+}

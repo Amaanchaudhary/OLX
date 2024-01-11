@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "../helpers/axios.config";
+import './UpdateProduct.css'
 
 const UpdateProduct = () => {
 
@@ -52,7 +53,8 @@ const UpdateProduct = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className="up-main" onSubmit={handleSubmit}>
+                <h1 className="up-h1">Update Your product</h1>
                 <label>Name</label><br/>
                 <input type="text" name='name' value={productData?.name} onChange={handleChange} /><br/>
                 <label>Category</label><br/> 
@@ -61,7 +63,7 @@ const UpdateProduct = () => {
                 <input type="url" name='image' value={productData?.image} onChange={handleChange} /><br/>
                 <label>Price</label><br/>
                 <input type="text" name='price' value={productData?.price} onChange={handleChange} /><br/><br/>
-                <input type="submit" value='update' /><br/>
+                <input  className="up-register" type="submit" value='UPDATE' /><br/>
             </form>
         </div>
     )

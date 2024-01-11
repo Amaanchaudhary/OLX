@@ -1,0 +1,37 @@
+.profile-screen{
+    height: 80vh;
+    width: 100%;
+    text-align: left;
+    /* border: 2px solid black; */
+}
+.profile-screen h1{
+    text-align: left;
+}
+ th ,  td{
+    border: 1px solid black;
+    font-size: 34px;
+}
+.table{
+    margin: auto;
+    border: 1px solid black;
+    margin-block-start: 50px;
+    font-size: 25px;
+}
+
+@media screen and (max-width : 1350px) {
+    th , td {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width : 1000px) {
+    th , td {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width : 600px) {
+    th , td {
+        font-size: 18px;
+    }
+}

@@ -5,13 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast'
+import ParentAuthContext from './Context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
         gutter={8}
         containerClassName=""
@@ -35,7 +36,9 @@ root.render(
           },
         }}
       />
-      <App />
+      <ParentAuthContext>
+        <App />
+      </ParentAuthContext>
     </BrowserRouter>
   </React.StrictMode>
 );

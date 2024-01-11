@@ -16,7 +16,7 @@ const Homepage = () => {
             try {
                 const { data } = await api.get('/product/get-all-product');
 
-                if(data.success){
+                if (data.success) {
                     setProducts(data.products)
                 }
 
@@ -32,15 +32,17 @@ const Homepage = () => {
             {Products?.length ?
                 <div id="main" >{Products.map((pro) => (
                     <div onClick={() => rout(`/single-product/${pro._id}`)} className="body">
-                        <img className="images" src={pro.image} />  
-                        <h3>Name : {pro.name}</h3>
-                        <h4>Price : {pro.price} $</h4>
-                        <p>Category : {pro.category}</p>
+                        <img className="images" src={pro.image} />
+                        <h3 className="h3">Name : {pro.name}</h3>
+                        <p className="p">Category : {pro.category}</p>
+                        <h4 className="h4">Price : {pro.price}</h4>
+                        {/* <button className="button" onClick={() => toast.success("Product added to cart")}>Add to cart</button> */}
                     </div>
                 ))}
-                </div>  
+                </div>
                 :
-                <div>Loading...</div>}
+                <div>No Products</div>
+            }
         </div>
     )
 }

@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import api from "../helpers/axios.config";
-
+import './AddProduct.css'
 
 
 const AddProduct = () => {
@@ -15,7 +15,7 @@ const AddProduct = () => {
 
     const [ProductData, SetProductData] = useState([{ name: "", price: "", image: "", category: "" }])
 
-    console.log(ProductData , "Product Data");
+    // console.log(ProductData, "Product Data");
 
     const handleChange = (event) => {
         // console.log(event.target.value)
@@ -47,19 +47,19 @@ const AddProduct = () => {
             toast.error("All Fields are Mandatory")
         }
     }
-    // console.log(state , "state")
 
-    useEffect(() => {
-        if (state?.user && state.user.name == undefined) {
-            rout("/login")
-            toast.error("Please login to access this page")
-        }
-        },[state])
+    // useEffect(() => {
+    //         if (state.user && state?.user?.name  == undefined){
+    //             toast.error("Please login to access this page")
+    //             rout("/login")
+    //         }
+    // }, [state?.user?.name])
+
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Add Product</h1>
+            <form className="ap-main" onSubmit={handleSubmit}>
+                <h1 className="ap-h1">Add Product</h1>
 
                 <label>Product Title</label><br />
                 <input type='text' onChange={handleChange} name='name' value={ProductData.title} /><br />
@@ -73,7 +73,7 @@ const AddProduct = () => {
                 <label>Product Image</label><br />
                 <input type='url' onChange={handleChange} name='image' value={ProductData.image} /><br /><br />
 
-                <input type='submit' value='Add Product' />
+                <input className="ap-register" type='submit' value='Add Product' />
             </form>
         </div>
     )

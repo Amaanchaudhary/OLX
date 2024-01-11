@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import './Navbar.css'
+import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
 
     const [isActive, setIsActive] = useState(false);
+
+    const { state, Logout } = useContext(AuthContext)
 
     const handleToggle = () => {
         setIsActive(prevState => !prevState);
@@ -22,8 +25,8 @@ const Navbar = () => {
         // var closeMenu2 = document.querySelector('.project')
         // var closeMenu2 = document.querySelector('.services')
         // var closeMenu2 = document.querySelector('.contact')
-        
-        closeMenu.addEventListener('click' , () => {
+
+        closeMenu.addEventListener('click', () => {
             navbar.classList.remove('active')
         })
 
@@ -45,20 +48,26 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div className="left-navi">
-                <h1><a>HOME.</a></h1>
+                <h1><a href="/">OLx.<sub className="maker">by Amaan</sub></a></h1>
             </div>
             <div className='burger'>
-                <button onClick={handleToggle} ><i class="fa-solid fa-bars fa-xl"></i></button> 
+                <button onClick={handleToggle} ><i class="fa-solid fa-bars fa-xl"></i></button>
             </div>
 
             <div className='right-navi'>
                 <ul>
-                    <li><a>Your Products</a></li>
-                    <li><a>Add Products</a></li>
-                    <li><a>SKILLS</a></li>
-                    <li><a>PROJECTS</a></li>
-                    <li><a>SERVICES</a></li>
-                    <li><a>CONTACT</a></li>
+                    {state?.user?.id ?
+                        <>
+                            <li><a href="/yourproducts">Your Products</a></li>
+                            <li><a href="/addproduct">Add Products</a></li>
+                            <li><a href="/profile"><i class="fa-solid fa-user"></i></a></li>
+                            <li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li onClick={Logout}><a>LOGOUT</a></li>
+                        </>
+                        :
+                        <li><a href="/login">LOGIN</a></li>
+                    }
+                    {/* <li><a>CONTACT</a></li> */}
                 </ul>
             </div>
         </div>

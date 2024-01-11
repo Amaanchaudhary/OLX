@@ -39,25 +39,30 @@ const YourProducts = () => {
     }
 
     useEffect(() => {
-        if (state?.user && state?.user.name == undefined) {
-            rout("/login")
-            toast.error("Please login to access this page")
-        }
         if (state?.user && state?.user?.name !== undefined) {
             getYourProducts()
         }
     }, [state])
 
+
     return (
-        <div className="yourproducts-Screen">
-            {YourProducts.map((pro) => (    
-                <div key={pro._id} className="yourproducts-product">
-                    <img src={pro.image} />
-                    <h3 className="proName">{pro.name}</h3>
-                    <button onClick={() => rout(`/updateproduct/${pro._id}`)}>Update ?</button>
-                    <button onClick={() => deleteProduct(pro._id)}>Delete ?</button>
+        <div>
+            {YourProducts.length ?
+                <div className="yourproducts-Screen">{YourProducts.map((pro) => (
+                    <div key={pro._id} className="yourproducts-product">
+                        <img src={pro.image} alt="img" />
+                        <h3 className="proName">Name : {pro.name}</h3>
+                        <h3 className="proPrice">Price : {pro.price}</h3>
+                        <button onClick={() => rout(`/updateproduct/${pro._id}`)}>Update ?</button>
+                        <button onClick={() => deleteProduct(pro._id)}>Delete ?</button>
+                    </div>
+
+                ))}
+
                 </div>
-            ))}
+                :
+                <div className="no-products">Loading...</div>
+            }
         </div>
     )
 }

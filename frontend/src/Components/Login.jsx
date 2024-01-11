@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../Context/AuthContext";
 import api from "../helpers/axios.config";
+import './Login.css'
 
 
 function Login(){
@@ -52,17 +53,17 @@ function Login(){
     }
 
     return (
-        <div>
+        <div className="login-main">
             <form onSubmit={sendDataToBackend} autoComplete="off" >
-                <h1>Login</h1>
+                <h1 className="login-h1">Login</h1>
                 <label>Email</label><br />
                 <input name='email' type="email" onChange={HandleChange} autoComplete="off" /><br />
 
                 <label>Password</label><br />
                 <input name='password' type="password" onChange={HandleChange} autoComplete="off" /><br /><br />
 
-                <input type="Submit" value='Login' readOnly/>
-                <button style={{marginLeft: "10px"}} onClick={() => rout('/register')}>Register?</button>
+                <input className="login-submit" type="Submit" value='Login' readOnly/>
+                <button className="login-register" onClick={() => rout('/register')}>Register?</button>
             </form>
         </div>
     )

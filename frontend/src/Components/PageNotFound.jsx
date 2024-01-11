@@ -16,7 +16,7 @@ const PageNotFound = () => {
 
     return (
         <div>
-            <h1>Page Not Found,Redirecting you to HomePage in {time} Sec</h1>
+            <h1 >Page Not Found,Redirecting you to HomePage in {time} Sec</h1>
             {/* <button onClick={() => rout("/")} >Click to go to HomePage</button> */}
         </div>
     )
