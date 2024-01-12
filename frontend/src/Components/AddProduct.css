@@ -1,7 +1,6 @@
 .ap-h1 {
     margin-bottom: 20px;
     font-size: 40px;
-
 }
 
 .ap-register {
@@ -19,6 +18,10 @@
     border: 1px solid black;
     margin-top: 10px;
 }   
+
+::placeholder{
+    font-size: 12px;
+}
 
 .ap-main {
     margin-top: 30px;

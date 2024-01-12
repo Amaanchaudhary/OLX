@@ -48,12 +48,15 @@ const AddProduct = () => {
         }
     }
 
-    // useEffect(() => {
-    //         if (state.user && state?.user?.name  == undefined){
-    //             toast.error("Please login to access this page")
-    //             rout("/login")
-    //         }
-    // }, [state?.user?.name])
+    useEffect(() => {
+        const tokenn = JSON.parse(localStorage.getItem("My-token"))
+        // console.log(tokenn , "tokken")
+        if(!tokenn){
+            rout("/login")
+            toast.error("please login")
+        }
+    }, [])
+
 
 
     return (
@@ -62,16 +65,16 @@ const AddProduct = () => {
                 <h1 className="ap-h1">Add Product</h1>
 
                 <label>Product Title</label><br />
-                <input type='text' onChange={handleChange} name='name' value={ProductData.title} /><br />
+                <input type='text' onChange={handleChange} name='name' value={ProductData.title} placeholder=" eg : Gucci" /><br />
 
                 <label>Product Category</label><br />
-                <input type='text' onChange={handleChange} name='category' value={ProductData.category} /><br />
+                <input type='text' onChange={handleChange} name='category' value={ProductData.category} placeholder=" eg : shoes" /><br />
 
                 <label>Product Price</label><br />
-                <input type='number' onChange={handleChange} name='price' value={ProductData.price} /><br />
+                <input type='number' onChange={handleChange} name='price' value={ProductData.price} placeholder=" eg : 999 " /><br />
 
                 <label>Product Image</label><br />
-                <input type='url' onChange={handleChange} name='image' value={ProductData.image} /><br /><br />
+                <input type='url' onChange={handleChange} name='image' value={ProductData.image} placeholder=" eg : Google link only https://img-gucci-shoes//" /><br /><br />
 
                 <input className="ap-register" type='submit' value='Add Product' />
             </form>

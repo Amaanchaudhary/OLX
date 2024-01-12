@@ -7,23 +7,22 @@ import './UpdateProduct.css'
 const UpdateProduct = () => {
 
     const rout = useNavigate();
-
     const { id } = useParams();
 
     const [productData, setProductData] = useState()
-    
+    console.log(productData)
     // alert(id)
 
     async function getProductData() {
         try {
             const response = await api.get(`/product/get-single-product?id=${id}`)
             if (response.data.success) {
-                // alert(id)
-                setProductData(response.data.product)
+                // console.log(response.data.data.product)
+                setProductData(response.data.data.product)
             }
         } catch (error) {
             console.log(error, "Error Found")
-            toast.error(error?.response?.data.message);
+            toast.error(error?.data?.message);
         }
     }
 
@@ -50,6 +49,15 @@ const UpdateProduct = () => {
             getProductData();
         }
     }, [id])
+
+    useEffect(() => {
+        const tokenn = JSON.parse(localStorage.getItem("My-token"))
+        // console.log(tokenn , "tokken")
+        if(!tokenn){
+            rout("/login")
+            toast.error("please login")
+        }
+    }, [])
 
     return (
         <div>

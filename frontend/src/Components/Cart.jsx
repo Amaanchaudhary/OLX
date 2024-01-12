@@ -9,7 +9,7 @@ const Cart = () => {
     const rout = useNavigate();
     const { state } = useContext(AuthContext);
     const [cartProducts, setCartProducts] = useState([]);
-    console.log(cartProducts)
+    // console.log(cartProducts)
     // alert(state?.user?.id)
 
     async function getYourCartProduct() {
@@ -21,7 +21,7 @@ const Cart = () => {
                 toast.success(response.data.message)
                 console.log(response.data.products, "cart products ")
                 setCartProducts(response.data.products)
-                // console.log(cartProducts)
+                console.log(response.data.products)
             }
         } catch (error) {
             console.log(error)
@@ -51,9 +51,18 @@ const Cart = () => {
                 getYourCartProduct()
             }
         } catch (error) {
-            console.log(error.response.data.message)
+            console.log(error?.response.data.message)
         }
     }, [state])
+
+    useEffect(() => {
+        const tokenn = JSON.parse(localStorage.getItem("My-token"))
+        // console.log(tokenn , "tokken")
+        if(!tokenn){
+            rout("/login")
+            toast.error("please login")
+        }
+    }, [])
 
     return (
         <div>

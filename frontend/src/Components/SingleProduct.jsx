@@ -57,11 +57,11 @@ const SingleProduct = () => {
                     <div className="discription-SPN" >
                         <h3><span>NAME </span>: {productData.data.product.name}</h3>
                         <h5><span>CATEGORY </span>: {productData.data.product.category}</h5>
-                        <h3><span>PRICE</span> : {productData.data.product.price} $</h3>
+                        <h3><span>PRICE</span> : {productData.data.product.price} </h3>
                         <h3><span>Added By</span> : {productData.data.user.name}</h3>
                         <h3><span>Contact No</span> : {productData.data.user.number}</h3>
                         {state?.user?.id &&
-                            <button onClick={() => Cart(productData.data.product._id)}>Add to Cart</button>
+                            <button className="cart-btn" onClick={() => Cart(productData.data.product._id)}>Add to Cart</button>
                         }
                     </div>
                 </div>

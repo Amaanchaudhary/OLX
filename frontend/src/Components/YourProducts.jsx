@@ -44,6 +44,14 @@ const YourProducts = () => {
         }
     }, [state])
 
+    useEffect(() => {
+        const tokenn = JSON.parse(localStorage.getItem("My-token"))
+        // console.log(tokenn , "tokken")
+        if(!tokenn){
+            rout("/login")
+            toast.error("please login")
+        }
+    }, [])
 
     return (
         <div>
