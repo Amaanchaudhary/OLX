@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import './Navbar.css'
 import { AuthContext } from "../Context/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
     const [isActive, setIsActive] = useState(false);
+
+    const rout = useNavigate();
 
     const { state, Logout } = useContext(AuthContext)
 
@@ -58,14 +61,14 @@ const Navbar = () => {
                 <ul>
                     {state?.user?.id ?
                         <>
-                            <li><a href="/yourproducts">Your Products</a></li>
-                            <li><a href="/addproduct">Add Products</a></li>
-                            <li><a href="/profile"><i class="fa-solid fa-user"></i></a></li>
-                            <li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li><a onClick={() => rout("/yourproducts")}>Your Products</a></li>
+                            <li><a onClick={() => rout("/addproduct")}>Add Products</a></li>
+                            <li><a onClick={() => rout("/profile")}><i class="fa-solid fa-user"></i></a></li>
+                            <li><a onClick={() => rout("/cart")}><i class="fa-solid fa-cart-shopping"></i></a></li>
                             <li onClick={Logout}><a>LOGOUT</a></li>
                         </>
                         :
-                        <li><a href="/login">LOGIN</a></li>
+                        <li><a onClick={() => rout("/login")}>LOGIN</a></li>
                     }
                     {/* <li><a>CONTACT</a></li> */}
                 </ul>
